@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+using System;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
-using System.Xml.Linq;
 
 namespace GenerateReleaseNotes
 {
@@ -21,7 +16,8 @@ namespace GenerateReleaseNotes
         static StringBuilder fileContent = new StringBuilder();
 
         #region RequiredToChange
-        static string releaseNotesVersion = @"2024 Q1 (version 2024.1.124)";
+        static string releaseNotesVersion = @"2024.1.305 (2024 Q1)";
+        static string releaseNotesVersionForSlug = releaseNotesVersion.Substring(0, releaseNotesVersion.IndexOf("(")).Replace(".","-");
         static string inputFile = @"..\..\ASP.NET Core, Blazor, Xamarin, WinUI.xml";
         #endregion
         static void Main(string[] args)
@@ -31,7 +27,7 @@ namespace GenerateReleaseNotes
             "title: " + releaseNotesVersion + Environment.NewLine +
             "page_title: What is new in " + releaseNotesVersion + " for the Document Processing Libraries" + Environment.NewLine +
             "description: " + releaseNotesVersion + Environment.NewLine + //2024 Q1 (version 2024.1.124)" +
-            "slug: release-notes-2024-q1" + Environment.NewLine +
+            "slug: release-notes-" + releaseNotesVersionForSlug + Environment.NewLine +
             "tags: " + tags + Environment.NewLine + //q1, 2024, release, notes"+
             "published: True" + Environment.NewLine +
             "position: 0" + Environment.NewLine +
@@ -42,7 +38,7 @@ namespace GenerateReleaseNotes
             dom.Load(inputFile);
             AddNode(dom.DocumentElement);
 
-            string path = @"..\..\release-notes-" + releaseNotesVersion + ".md";
+            string path = @"..\..\release-notes-" + releaseNotesVersionForSlug + ".md";
             File.Delete(path);
             File.WriteAllText(path, fileContent.ToString());
             Process.Start(path);
