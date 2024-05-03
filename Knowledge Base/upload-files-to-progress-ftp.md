@@ -14,7 +14,7 @@ res_type: kb
 ## Environment
 |Product Version|Product|Author|
 |----|----|----|
-|2022.3.1109|UI for WinForms|[Desislava Yordanova](https://www.telerik.com/blogs/author/desislava-yordanova)|
+|2022.3.1109| Telerik |[Desislava Yordanova](https://www.telerik.com/blogs/author/desislava-yordanova)|
 
 ## Description
 
