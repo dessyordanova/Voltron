@@ -17,7 +17,7 @@ namespace GenerateReleaseNotes
 
         #region RequiredToChange
         static string releaseNotesVersion = @"2024.1.305 (2024 Q1)";
-        static string releaseNotesVersionForSlug = releaseNotesVersion.Substring(0, releaseNotesVersion.IndexOf("(")).Replace(".","-");
+        static string releaseNotesVersionForSlug = releaseNotesVersion.Substring(0, releaseNotesVersion.IndexOf("(")-1).Replace(".","-");
         static string inputFile = @"..\..\ASP.NET Core, Blazor, Xamarin, WinUI.xml";
         #endregion
         static void Main(string[] args)
